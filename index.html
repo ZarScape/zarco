@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zarco</title>
+    <meta name="description" content="Zarco, Your Ultimate Discord Companion. Always by Your Side. A multipurpose app packed with everything you need to enhance your server. Developed by ZarScape.">
+    <meta name="keywords" content="Zarco, Discord Bot, Discord App, ZarScape, Multipurpose Bot, Discord Companion, Zarco Development">
+    <meta name="author" content="ZarScape">
+    <meta name="theme-color" content="#a020f0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Zarco - Your Ultimate Discord Companion">
+    <meta property="og:description" content="A multipurpose app packed with everything you need to enhance your server. Developed by ZarScape.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/purple.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Zarco - Your Ultimate Discord Companion">
+    <meta property="twitter:description" content="A multipurpose app packed with everything you need to enhance your server. Developed by ZarScape.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco.png">
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ZarScape/ZarScape/main/images/Zarco/zarco-round-ico.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/zarco.css">
+    <script src="js/zarco.js"></script>
+</head>
+<body class="bg-discord-chat text-discord-text h-screen flex overflow-hidden select-none text-[15px]">
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-[#313338] z-[9999] flex flex-col items-center justify-center text-center select-none transition-opacity duration-300">
+        <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Discord/discord_loading.gif" class="w-32 h-32 mb-8">
+        <div class="text-white font-bold text-[12px] tracking-widest mb-2 uppercase">Did You Know</div>
+        <div class="text-discord-text text-[14px] font-medium">You can join Zarco App support server to get help</div>
+    </div>
+
+    <!-- Sidebar: Servers -->
+    <nav class="w-[72px] bg-[#2c2d32] flex-col items-center py-3 gap-2 shrink-0 overflow-y-auto no-scrollbar hidden sm:flex border-r border-discord-divider">
+        <div class="group relative flex justify-center w-full">
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-r-full w-1 h-2 transition-all group-hover:h-5 opacity-0 group-hover:opacity-100"></div>
+            <div class="w-[48px] h-[48px] bg-discord-chat rounded-[16px] group-hover:bg-discord-blurple transition-all flex items-center justify-center cursor-pointer text-discord-text group-hover:text-white">
+                <div style="width: 28px; height: 28px; background-color: currentColor; -webkit-mask-image: url(assets/icons/discord.svg); mask-image: url(assets/icons/discord.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></div>
+            </div>
+        </div>
+        <div class="w-8 h-[2px] bg-[#35363C] rounded-lg mx-auto mb-1"></div>
+        <div class="group relative flex justify-center w-full">
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-r-full w-1 h-10"></div>
+            <div class="w-[48px] h-[48px] bg-discord-chat rounded-[16px] flex items-center justify-center cursor-pointer text-white overflow-hidden relative border border-transparent">
+               <div class="absolute inset-0 bg-[#313338] flex items-center justify-center">
+                   <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/purple.png" alt="Zarco" class="w-full h-full object-cover">
+               </div>
+            </div>
+        </div>
+        <div class="group relative flex justify-center w-full">
+            <div class="w-[48px] h-[48px] bg-discord-chat rounded-[24px] group-hover:rounded-[16px] group-hover:bg-discord-blurple transition-all flex items-center justify-center cursor-pointer text-discord-text group-hover:text-white">
+                <div style="width: 24px; height: 24px; background-color: currentColor; -webkit-mask-image: url(assets/icons/add-a-server.svg); mask-image: url(assets/icons/add-a-server.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></div>
+            </div>
+        </div>
+        <div class="group relative flex justify-center w-full">
+            <div class="w-[48px] h-[48px] bg-discord-chat rounded-[24px] group-hover:rounded-[16px] group-hover:bg-discord-blurple transition-all flex items-center justify-center cursor-pointer text-discord-text group-hover:text-white">
+                <div style="width: 24px; height: 24px; background-color: currentColor; -webkit-mask-image: url(assets/icons/explore.svg); mask-image: url(assets/icons/explore.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar: Channels -->
+    <div class="w-80 bg-[#2c2d32] flex-col shrink-0 hidden md:flex">
+        <header class="h-12 px-4 flex items-center justify-center bg-[#2c2d32] shadow-sm border-b border-discord-divider shrink-0">
+        </header>
+        <header class="h-12 px-4 flex items-center justify-between shadow-sm cursor-pointer hover:bg-discord-hover transition-colors border-b border-discord-divider">
+            <h1 class="font-bold text-discord-header text-[15px] truncate">Zarco HQ</h1>
+            <i class="fa-solid fa-chevron-down text-xs"></i>
+        </header>
+
+        <div class="flex-1 overflow-y-auto pt-3 px-2 space-y-[2px]">
+            <div class="flex items-center px-2 py-[6px] text-discord-muted hover:bg-discord-hover hover:text-discord-text rounded-[4px] cursor-pointer group mb-4">
+                <div class="w-5 h-5 mr-1.5 shrink-0" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/events.svg); mask-image: url(assets/icons/events.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></div>
+                <span class="font-medium text-[15px]">Events</span>
+            </div>
+
+            <div id="category-header" class="flex items-center justify-between pr-2 pl-0 pt-2 pb-1 text-xs font-bold text-discord-muted hover:text-discord-text cursor-pointer uppercase tracking-wide group">
+                <div class="flex items-center">
+                    <div id="category-arrow" class="w-3 h-3 mr-1"></div>
+                    IMPORTANT
+                </div>
+            </div>
+
+            <div id="category-channels">
+                <div id="channel-zarco" data-channel="zarco" class="channel-item flex items-center px-2 py-[6px] bg-discord-hover text-white rounded-[4px] cursor-pointer group relative mb-[2px]">
+                    <div class="w-5 h-5 mr-1.5 shrink-0 text-discord-muted" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
+                    <span class="font-medium text-[15px]">zarco</span>
+                </div>
+                <div id="channel-tos" data-channel="tos" class="channel-item flex items-center px-2 py-[6px] text-discord-muted hover:bg-discord-hover hover:text-discord-text rounded-[4px] cursor-pointer group relative mb-[2px]">
+                    <div class="w-5 h-5 mr-1.5 shrink-0 text-discord-muted" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
+                    <span class="font-medium text-[15px]">tos</span>
+                </div>
+                <div id="channel-privacy" data-channel="privacy" class="channel-item flex items-center px-2 py-[6px] text-discord-muted hover:bg-discord-hover hover:text-discord-text rounded-[4px] cursor-pointer group relative mb-[2px]">
+                    <div class="w-5 h-5 mr-1.5 shrink-0 text-discord-muted" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
+                    <span class="font-medium text-[15px]">privacy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Area (Floating) -->
+    <div class="fixed bottom-2 left-2 w-[376px] h-[60px] bg-[#232428] px-2 flex items-center justify-between shrink-0 rounded-[8px] shadow-lg z-50 hidden md:flex overflow-hidden">
+        <video src="https://cdn.discordapp.com/assets/collectibles/nameplates/cosmos/cosmic_twilight_flow_beryl/asset.webm" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none"></video>
+        <div class="relative z-10 flex items-center group cursor-pointer hover:bg-white/5 rounded px-1 py-1 flex-1 min-w-0">
+            <div class="relative mr-2 shrink-0">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarScape/logo-with-background.png" class="w-8 h-8 rounded-full">
+                <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_1005898c6acf56a9ac5010baf444f6fd.png?size=80&passthrough=true" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40px] h-[40px] pointer-events-none">
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-[#232428] rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
+                </div>
+            </div>
+            <div class="text-sm leading-tight truncate relative">
+                <div class="font-bold text-white text-[13px] truncate">ZarScape</div>
+                <div class="text-discord-muted text-[11px] truncate flex items-center">
+                    <img src="https://cdn.discordapp.com/emojis/1418253423639531550.webp?size=40" class="w-3 h-3 mr-1">
+                    Developer @ Zarco
+                </div>
+            </div>
+        </div>
+        <div class="relative z-10 flex items-center shrink-0">
+            <button id="btn-mute" class="w-8 h-8 flex items-center justify-center hover:bg-discord-hover rounded text-discord-text" title="Mute"></button>
+            <button id="btn-deafen" class="w-8 h-8 flex items-center justify-center hover:bg-discord-hover rounded text-discord-text" title="Deafen"></button>
+            <button class="w-8 h-8 flex items-center justify-center hover:bg-discord-hover rounded text-discord-text" title="User Settings">
+                <div style="width: 20px; height: 20px; background-color: currentColor; -webkit-mask-image: url(assets/icons/settings.svg); mask-image: url(assets/icons/settings.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></div>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div class="flex-1 flex flex-col min-w-0 bg-[#323339]">
+        <!-- Top Bar -->
+        <div class="h-12 px-4 flex items-center shadow-sm border-b border-discord-divider shrink-0 z-10 bg-[#323339] relative">
+            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/purple.png" class="w-6 h-6 rounded-md mr-2">
+                <span class="font-bold text-discord-header text-[15px]">Zarco HQ</span>
+            </div>
+            <div class="ml-auto flex items-center space-x-4">
+                <!-- Inbox SVG -->
+                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/inbox.svg); mask-image: url(assets/icons/inbox.svg);" title="Inbox"></div>
+                <!-- Help SVG -->
+                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/help.svg); mask-image: url(assets/icons/help.svg);" title="Help"></div>
+            </div>
+        </div>
+
+        <!-- Channel Header -->
+        <header class="h-12 px-4 flex items-center shadow-sm border-b border-discord-divider shrink-0 z-10 bg-[#323339] relative">
+            <div class="flex items-center text-discord-muted mr-4">
+                <div class="w-6 h-6 mr-2 shrink-0 text-[#80848E]" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
+                <span id="current-channel-name" class="font-bold text-discord-header text-[15px]">zarco</span>
+            </div>
+            
+            <div class="ml-auto flex items-center space-x-4">
+                <!-- Threads SVG -->
+                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/threads.svg); mask-image: url(assets/icons/threads.svg);" title="Threads"></div>
+
+                <!-- Bell SVG -->
+                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/bell.svg); mask-image: url(assets/icons/bell.svg);" title="Notifications"></div>
+                
+                <!-- Pin SVG -->
+                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/pin.svg); mask-image: url(assets/icons/pin.svg);" title="Pinned Messages"></div>
+                
+                <!-- Members SVG -->
+                <div class="header-icon active" style="-webkit-mask-image: url(assets/icons/members.svg); mask-image: url(assets/icons/members.svg);" title="Show Member List"></div>
+                
+                <div class="relative">
+                    <input type="text" placeholder="Search" class="bg-discord-darkest text-xs px-2 py-[5px] rounded-[4px] w-48 outline-none transition-all focus:w-80 text-discord-text">
+                </div>
+
+                <!-- Bookmark SVG -->
+                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/bookmark.svg); mask-image: url(assets/icons/bookmark.svg);" title="Bookmarks"></div>
+            </div>
+        </header>
+
+        <!-- Flex Container for Chat and Members -->
+        <div class="flex-1 flex overflow-hidden">
+            <!-- Chat Area -->
+            <div class="flex-1 flex flex-col min-w-0 relative">
+                <main class="flex-1 overflow-y-auto px-4 flex flex-col pb-6">
+                    <!-- Zarco Channel Content -->
+                    <div id="content-zarco" class="channel-content flex-1 flex flex-col">
+                        <div class="mt-auto mb-6">
+                            <div class="w-[68px] h-[68px] bg-[#41434a] rounded-full flex items-center justify-center mb-4 text-white">
+                                <div class="w-9 h-9" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
+                            </div>
+                            <h1 class="text-[32px] font-bold text-white mb-2">Welcome to #zarco!</h1>
+                            <p class="text-discord-muted text-[16px]">This is the start of the #zarco channel.</p>
+                        </div>
+
+                        <!-- Plain Message with Buttons -->
+                        <div class="group flex pl-4 pr-4 py-1 hover:bg-[#2e3035] -mx-4 mt-4">
+                            <div class="w-10 h-10 rounded-full bg-discord-green mr-4 mt-0.5 shrink-0 flex items-center justify-center text-white font-bold text-lg">
+                                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-animate.gif" alt="Zarco" class="w-full h-full object-cover rounded-full">
+                            </div>
+                            <div class="w-full">
+                                <div class="flex items-center mb-1">
+                                    <span class="font-medium text-white hover:underline cursor-pointer mr-1.5">Zarco</span>
+                                    <span class="bg-discord-blurple text-white bot-tag mr-1.5"><i class="fa-solid fa-check text-[8px] mr-1"></i> APP</span>
+                                    <span class="text-xs text-discord-muted">Today at 11:05 PM</span>
+                                </div>
+                                <div class="text-discord-text text-[15px] leading-[1.375rem]">
+                                    <p class="mb-1">Welcome to <span class="text-[#c9cdfb] bg-[#3f4147] px-1 rounded cursor-pointer hover:bg-[#5865F2] hover:text-white transition-colors">#zarco</span>!</p>
+                                    <p class="mb-1">Zarco, Your Ultimate Discord Companion. Always by Your Side</p>
+                                    <p class="mb-2">A multipurpose app packed with everything you need to enhance your server</p>
+                                    <div class="flex gap-2 mt-2">
+                                        <a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="bg-[#4e5058] hover:bg-[#6d6f78] text-white text-sm font-medium px-4 h-8 rounded-[8px] flex items-center transition-colors no-underline">Support <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-2"></i></a>
+                                        <a href="https://discord.com/oauth2/authorize?client_id=1345820519827636295" target="_blank" class="bg-[#4e5058] hover:bg-[#6d6f78] text-white text-sm font-medium px-4 h-8 rounded-[8px] flex items-center transition-colors no-underline">Invite <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-2"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TOS Channel Content -->
+                    <div id="content-tos" class="channel-content hidden flex-1 flex flex-col">
+                        <div class="mt-auto mb-6">
+                            <div class="w-[68px] h-[68px] bg-[#41434a] rounded-full flex items-center justify-center mb-4 text-white">
+                                <div class="w-9 h-9" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
+                            </div>
+                            <h1 class="text-[32px] font-bold text-white mb-2">Welcome to #tos!</h1>
+                            <p class="text-discord-muted text-[16px]">This is the start of the #tos channel.</p>
+                        </div>
+                        <div class="group flex pl-4 pr-4 py-1 hover:bg-[#2e3035] -mx-4 mt-4">
+                            <div class="w-10 h-10 rounded-full bg-discord-green mr-4 mt-0.5 shrink-0 flex items-center justify-center text-white font-bold text-lg">
+                                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-animate.gif" alt="Zarco" class="w-full h-full object-cover rounded-full">
+                            </div>
+                            <div class="w-full">
+                                <div class="flex items-center mb-1">
+                                    <span class="font-medium text-white hover:underline cursor-pointer mr-1.5">Zarco</span>
+                                    <span class="bg-discord-blurple text-white bot-tag mr-1.5"><i class="fa-solid fa-check text-[8px] mr-1"></i> APP</span>
+                                    <span class="text-xs text-discord-muted">Today at 11:05 PM</span>
+                                </div>
+                                <div class="text-discord-text text-[15px] leading-[1.375rem]">
+                                    <h1 class="text-xl font-bold text-white mb-1">Terms of Service</h1>
+                                    <p class="text-xs text-discord-muted mb-4 uppercase font-bold">Last updated on: Friday, June 20, 2025</p>
+                                    
+                                    <p class="mb-4"><strong class="text-white">Welcome to Zarco’s Terms of Service</strong><br>By using the Zarco Discord bot (“the App”), you agree to be bound by these Terms of Service (“Terms”). If you do not agree, please discontinue use.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">License</h2>
+                                    <p class="mb-2">Zarco grants you a limited, non-exclusive, non-transferable license to use the App for personal or non-commercial purposes in accordance with these Terms.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Prohibited Uses</h2>
+                                    <p class="mb-1">You must not use the App in any way that:</p>
+                                    <ul class="list-disc list-inside mb-2 pl-2 space-y-1">
+                                        <li>Violates any applicable laws or regulations.</li>
+                                        <li>Contravenes Discord’s Terms of Service or Community Guidelines.</li>
+                                        <li>Harms or disrupts the App, other users, or servers.</li>
+                                        <li>Is for commercial gain without explicit written consent from Zarco.</li>
+                                    </ul>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">User Responsibilities</h2>
+                                    <p class="mb-1">You are responsible for:</p>
+                                    <ul class="list-disc list-inside mb-2 pl-2 space-y-1">
+                                        <li>Maintaining confidentiality of your Discord account credentials.</li>
+                                        <li>Ensuring your use complies with all laws and server rules.</li>
+                                    </ul>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Data Practices</h2>
+                                    <p class="mb-2">For details on data collection and usage, please see our <a href="#privacy" onclick="document.getElementById('channel-privacy').click()" class="text-[#00b0f4] hover:underline">Privacy Policy</a>.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Termination</h2>
+                                    <ul class="list-disc list-inside mb-2 pl-2 space-y-1">
+                                        <li><strong class="text-white">By Zarco:</strong> We may suspend or revoke access for Terms violations.</li>
+                                        <li><strong class="text-white">By You:</strong> You may stop using the App at any time.</li>
+                                    </ul>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Disclaimers & Limitations</h2>
+                                    <p class="mb-2">The App is provided “as is.” Zarco disclaims all warranties and is not liable for damages arising from your use.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Indemnification</h2>
+                                    <p class="mb-2">You agree to indemnify Zarco and its officers from any claims or liabilities arising from your use or violation of these Terms.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Modifications</h2>
+                                    <p class="mb-2">We reserve the right to modify or discontinue features without notice.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Governing Law</h2>
+                                    <p class="mb-2">These Terms are governed by generally accepted principles of international law. Disputes will be resolved through good-faith negotiation or binding arbitration.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Contact</h2>
+                                    <p class="mb-2">For inquiries, reach out in our support server: <a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="text-[#00b0f4] hover:underline">Zarco HQ</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Channel Content -->
+                    <div id="content-privacy" class="channel-content hidden flex-1 flex flex-col">
+                        <div class="mt-auto mb-6">
+                            <div class="w-[68px] h-[68px] bg-[#41434a] rounded-full flex items-center justify-center mb-4 text-white">
+                                <div class="w-9 h-9" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
+                            </div>
+                            <h1 class="text-[32px] font-bold text-white mb-2">Welcome to #privacy!</h1>
+                            <p class="text-discord-muted text-[16px]">This is the start of the #privacy channel.</p>
+                        </div>
+                        <div class="group flex pl-4 pr-4 py-1 hover:bg-[#2e3035] -mx-4 mt-4">
+                            <div class="w-10 h-10 rounded-full bg-discord-green mr-4 mt-0.5 shrink-0 flex items-center justify-center text-white font-bold text-lg">
+                                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-animate.gif" alt="Zarco" class="w-full h-full object-cover rounded-full">
+                            </div>
+                            <div class="w-full">
+                                <div class="flex items-center mb-1">
+                                    <span class="font-medium text-white hover:underline cursor-pointer mr-1.5">Zarco</span>
+                                    <span class="bg-discord-blurple text-white bot-tag mr-1.5"><i class="fa-solid fa-check text-[8px] mr-1"></i> APP</span>
+                                    <span class="text-xs text-discord-muted">Today at 11:05 PM</span>
+                                </div>
+                                <div class="text-discord-text text-[15px] leading-[1.375rem]">
+                                    <h1 class="text-xl font-bold text-white mb-1">Privacy Policy</h1>
+                                    <p class="text-xs text-discord-muted mb-4 uppercase font-bold">Last updated on: Monday, July 29, 2025</p>
+                                    
+                                    <p class="mb-4"><strong class="text-white">Welcome to Zarco’s Privacy Policy</strong><br>At Zarco, we prioritize your privacy. This policy explains exactly what data we collect, how we use it, and how we keep it secure—always minimizing retention and never storing message content.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Data Collected</h2>
+                                    <ul class="list-disc list-inside mb-2 pl-2 space-y-1">
+                                        <li><strong class="text-white">Discord IDs</strong> (User, Server, Channel) to enable bot functionality (e.g., giveaways, embeds, PVCs).</li>
+                                        <li><strong class="text-white">Temporary Session Data</strong> (e.g., giveaway participants, embed drafts) stored locally and purged immediately after use.</li>
+                                        <li><strong class="text-white">Configuration IDs</strong> (e.g., role IDs for autorole, channel IDs for audit logs) stored only for as long as the feature is enabled.</li>
+                                    </ul>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">No Message Content Storage</h2>
+                                    <p class="mb-2">We do not retain any user messages. Modmail DMs, giveaway interactions, embed inputs, and utility command inputs are processed in real-time and immediately discarded.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">No External Databases</h2>
+                                    <p class="mb-2">All data is stored securely on our own servers in JSON files or local databases. We never use third-party or cloud databases.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Data Usage</h2>
+                                    <ul class="list-disc list-inside mb-2 pl-2 space-y-1">
+                                        <li>Deliver bot features (e.g., create private VCs, manage giveaways).</li>
+                                        <li>Respect permissions and security settings.</li>
+                                        <li>Automatically purge data when no longer needed.</li>
+                                    </ul>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Data Sharing</h2>
+                                    <p class="mb-2">We do not sell, trade, or rent any personal data. We do not share your data with third parties except when legally required or to comply with valid legal processes.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Security Measures</h2>
+                                    <p class="mb-2">We implement industry-standard security measures to protect your data both during transmission and storage. However, no method of internet transmission or storage is completely secure.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Cookies</h2>
+                                    <p class="mb-2">Our website may use cookies to enhance user experience. These cookies do not track personal information or bot-related data.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Your Rights</h2>
+                                    <p class="mb-2">Depending on your jurisdiction, you can request access to or deletion of your data by contacting us via Zarco HQ.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Policy Updates</h2>
+                                    <p class="mb-2">We may revise this policy to reflect changes in our practices or legal requirements. Each update will show a new “Last updated” date.</p>
+
+                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Contact Us</h2>
+                                    <p class="mb-2">For any privacy inquiries, please reach out in our support server: <a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="text-[#00b0f4] hover:underline">Zarco HQ</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Message Input -->
+                <div class="px-4 pb-6 pt-2">
+                    <div class="bg-[#383a40] rounded-lg flex items-center px-4 py-2.5 cursor-not-allowed">
+                        <input type="text" placeholder="You don't have permissions to send messages in this channel." class="bg-transparent flex-1 outline-none text-discord-text cursor-not-allowed placeholder-discord-muted" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar: Members -->
+            <div class="w-64 bg-[#323339] flex-col shrink-0 overflow-y-auto no-scrollbar pb-4 hidden lg:flex border-l border-discord-divider">
+                <!-- ROLE SECTION: DEVELOPER -->
+                <div class="px-4 mt-6 mb-1">
+                    <h2 class="text-[12px] font-bold text-discord-muted uppercase tracking-wider">Developer — 1</h2>
+                </div>
+        
+        <div class="member-item relative overflow-hidden flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100">
+            <video src="https://cdn.discordapp.com/assets/collectibles/nameplates/cosmos/cosmic_twilight_flow_beryl/asset.webm" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none"></video>
+            <div class="relative mr-3 shrink-0 z-10">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarScape/logo-with-background.png" class="w-8 h-8 rounded-full ring-0">
+                <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_1005898c6acf56a9ac5010baf444f6fd.png?size=80&passthrough=true" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40px] h-[40px] pointer-events-none">
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
+                </div>
+            </div>
+            <div class="min-w-0 flex-1 relative z-10">
+                <div class="flex items-center">
+                    <span class="text-white font-semibold text-[15px] truncate leading-tight">ZarScape</span>
+                    <div class="w-[14px] h-[14px] ml-1.5 shrink-0 bg-discord-yellow" style="-webkit-mask-image: url(assets/icons/developer-badge.svg); mask-image: url(assets/icons/developer-badge.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;" title="Developer"></div>
+                </div>
+                <div class="text-[11px] text-discord-muted truncate leading-tight flex items-center mt-0.5">
+                    <img src="https://cdn.discordapp.com/emojis/1418253423639531550.webp?size=40" class="w-4 h-4 mr-1">
+                    Developer @ Zarco
+                </div>
+            </div>
+        </div>
+
+        <!-- ROLE SECTION: BOTS -->
+        <div class="px-4 mt-6 mb-1">
+            <h2 class="text-[12px] font-bold text-discord-muted uppercase tracking-wider">APPS — 1</h2>
+        </div>
+
+        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
+            <div class="relative mr-3 shrink-0">
+                <div class="w-8 h-8 rounded-full bg-discord-green flex items-center justify-center text-white font-bold text-[13px]">
+                    <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-animate.gif" alt="Zarco" class="w-full h-full object-cover rounded-full">
+                </div>
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
+                </div>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center">
+                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Zarco</span>
+                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROLE SECTION: PARTNERS -->
+        <div class="px-4 mt-6 mb-1">
+            <h2 class="text-[12px] font-bold text-discord-muted uppercase tracking-wider">PARTNERS — 7</h2>
+        </div>
+
+        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
+            <div class="relative mr-3 shrink-0">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/Lyxious.png" class="w-8 h-8 rounded-full">
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
+                </div>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center">
+                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Lyxios</span>
+                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
+                </div>
+                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">/luckyblock</div>
+            </div>
+        </div>
+
+        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
+            <div class="relative mr-3 shrink-0">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/Confessy.png" class="w-8 h-8 rounded-full">
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
+                </div>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center">
+                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Confessy</span>
+                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
+                </div>
+                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">Anonymous Confessions</div>
+            </div>
+        </div>
+
+        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
+            <div class="relative mr-3 shrink-0">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/LazaBot.png" class="w-8 h-8 rounded-full">
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
+                </div>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center">
+                    <span class="text-white font-semibold text-[15px] truncate leading-tight">LazaBot</span>
+                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
+                </div>
+                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">LazaBot | !help</div>
+            </div>
+        </div>
+
+        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
+            <div class="relative mr-3 shrink-0">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/8fc7f62915b0d3b5c7f55a92a9253395ec895f30/images/ZarcoPartners/WavyBot.png" class="w-8 h-8 rounded-full">
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
+                </div>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center">
+                    <span class="text-white font-semibold text-[15px] truncate leading-tight">WavyBot</span>
+                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
+                </div>
+                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">@WavyBot || Waves in the Beach</div>
+            </div>
+        </div>
+
+        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
+            <div class="relative mr-3 shrink-0">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/Spike.png" class="w-8 h-8 rounded-full">
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
+                </div>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center">
+                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Spike</span>
+                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
+                </div>
+                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">Bot Brawl Stars 100%</div>
+            </div>
+        </div>
+
+        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
+            <div class="relative mr-3 shrink-0">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/Rypo.png" class="w-8 h-8 rounded-full">
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
+                </div>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center">
+                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Rypo</span>
+                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
+            <div class="relative mr-3 shrink-0">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/Drayv.gif" class="w-8 h-8 rounded-full">
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
+                </div>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center">
+                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Drayv</span>
+                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
+                </div>
+                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">✨ gg/BqXCqRqkFh</div>
+            </div>
+        </div>
+
+        <!-- OFFLINE SECTION -->
+        <div class="px-4 mt-6 mb-1">
+            <h2 class="text-[12px] font-bold text-discord-muted uppercase tracking-wider">Offline — 1</h2>
+        </div>
+
+        <div class="member-item flex items-center px-2 py-1 mx-2 opacity-40 hover:opacity-100 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-all duration-100 mt-0.5">
+            <div class="relative mr-3 shrink-0">
+                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/blue.png" class="w-8 h-8 rounded-full">
+                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
+                    <div class="w-[10px] h-[10px] bg-[#1e1f22] border-[2.5px] border-discord-muted rounded-full"></div>
+                </div>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="text-discord-muted font-semibold text-[15px] truncate group-hover:text-white leading-tight">Zarco Tester</div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+</body>
+</html>
