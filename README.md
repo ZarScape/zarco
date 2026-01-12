@@ -9,7 +9,7 @@
 
   [![Invite](https://img.shields.io/badge/Invite-Zarco-00dbc5?style=for-the-badge&logo=discord&logoColor=black)](https://discord.com/oauth2/authorize?client_id=1345820519827636295)
   [![Support](https://img.shields.io/badge/Support-Server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/6YVmxA4Qsf)
-  [![Website](https://img.shields.io/badge/Website-Live-success?style=for-the-badge)](https://zarcodex.github.io/zarco)
+  [![Website](https://img.shields.io/badge/Website-Live-success?style=for-the-badge)](https://zarscape.github.io/zarco)
 
 </div>
 
@@ -51,15 +51,15 @@ Zarco comes packed with everything you need, built right in:
 
 ## 🔗 Links
 
-- **Website:** [zarcodex.github.io/zarco](https://zarcodex.github.io/zarco)
+- **Website:** [zarscape.github.io/zarco](https://zarscape.github.io/zarco)
 - **Invite Zarco:** [Add to Discord](https://discord.com/oauth2/authorize?client_id=1345820519827636295)
 - **Support Server:** [Zarco HQ](https://discord.gg/6YVmxA4Qsf)
-- **Partners:** [View Partners](https://zarcodex.github.io/zarco/partners.html)
+- **Partners:** [View Partners](https://zarscape.github.io/zarco/partners.html)
 
 ## ⚖️ Legal
 
-- [Terms of Service](https://zarcodex.github.io/zarco/tos.html)
-- [Privacy Policy](https://zarcodex.github.io/zarco/privacy.html)
+- [Terms of Service](https://zarscape.github.io/zarco/tos.html)
+- [Privacy Policy](https://zarscape.github.io/zarco/privacy.html)
 
 ##  Author
 
