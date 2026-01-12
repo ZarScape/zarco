@@ -1,551 +1,557 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zarco</title>
-    <meta name="description" content="Zarco, Your Ultimate Discord Companion. Always by Your Side. A multipurpose app packed with everything you need to enhance your server. Developed by ZarScape.">
-    <meta name="keywords" content="Zarco, Discord Bot, Discord App, ZarScape, Multipurpose Bot, Discord Companion, Zarco Development">
+    <title>Zarco | The Ultimate Discord Bot</title>
+    <meta name="description" content="Zarco is the definitive multi-purpose Discord app. High-end moderation, advanced utilities, and powerful engagement tools for elite servers.">
+    <meta name="keywords" content="Discord, Bot, Moderation, Zarco, Server Management, Discord App, Automation">
     <meta name="author" content="ZarScape">
     <meta name="theme-color" content="#00dbc5">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Zarco - Your Ultimate Discord Companion">
-    <meta property="og:description" content="A multipurpose app packed with everything you need to enhance your server. Developed by ZarScape.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco.png">
+    <meta property="og:title" content="Zarco | The Ultimate Discord Bot">
+    <meta property="og:description" content="Zarco is the definitive multi-purpose Discord app. High-end moderation, advanced utilities, and powerful engagement tools for elite servers.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-round-200x200.png">
+
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="Zarco - Your Ultimate Discord Companion">
-    <meta property="twitter:description" content="A multipurpose app packed with everything you need to enhance your server. Developed by ZarScape.">
-    <meta property="twitter:image" content="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco.png">
-    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ZarScape/ZarScape/main/images/Zarco/zarco-round-ico.ico">
+    <meta property="twitter:title" content="Zarco | The Ultimate Discord Bot">
+    <meta property="twitter:description" content="Zarco is the definitive multi-purpose Discord app. High-end moderation, advanced utilities, and powerful engagement tools for elite servers.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-round-200x200.png">
+
+    <link rel="icon" href="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-round-200x200.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/zarco.css">
-    <script src="js/zarco.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
-
-<body class="bg-discord-chat text-discord-text h-screen flex overflow-hidden select-none text-[15px]">
-
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="fixed inset-0 bg-[#313338] z-[9999] flex flex-col items-center justify-center text-center select-none transition-opacity duration-300">
-        <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Discord/discord_loading.gif" class="w-32 h-32 mb-8">
-        <div class="text-white font-bold text-[12px] tracking-widest mb-2 uppercase">Did You Know</div>
-        <div class="text-discord-text text-[14px] font-medium">You can join Zarco App support server to get help</div>
+<body class="selection:bg-[#00dbc5]/30">
+    <!-- Background Animations -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-anim opacity-20" 
+             style="background: radial-gradient(circle, var(--accent) 0%, transparent 70%); filter: blur(80px); animation-duration: 25s;"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-anim opacity-20" 
+             style="background: radial-gradient(circle, var(--accent) 0%, transparent 70%); filter: blur(80px); animation-duration: 30s; animation-delay: -5s;"></div>
     </div>
 
-    <!-- Sidebar: Servers -->
-    <nav class="w-[72px] bg-[#2c2d32] flex-col items-center py-3 gap-2 shrink-0 overflow-y-auto no-scrollbar hidden sm:flex border-r border-discord-divider">
-        <div class="group relative flex justify-center w-full">
-            <div class="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-r-full w-1 h-2 transition-all group-hover:h-5 opacity-0 group-hover:opacity-100"></div>
-            <div class="w-[48px] h-[48px] bg-discord-chat rounded-[16px] group-hover:bg-discord-blurple transition-all flex items-center justify-center cursor-pointer text-discord-text group-hover:text-white">
-                <div style="width: 28px; height: 28px; background-color: currentColor; -webkit-mask-image: url(assets/icons/discord.svg); mask-image: url(assets/icons/discord.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></div>
+    <!-- Mobile Menu Backdrop -->
+    <div id="mobile-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-md z-40 hidden transition-opacity duration-300"></div>
+
+    <div id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[92%] max-w-6xl rounded-full glass border border-white/10 px-6 py-4 flex justify-between items-center shadow-2xl shadow-black/50 hover:border-accent/30 hover:shadow-accent/10" style="animation: navSlideDown 1s cubic-bezier(0.16, 1, 0.3, 1);">
+            <div class="flex items-center gap-2 group cursor-pointer">
+                <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center shadow-accent group-hover:scale-110 transition-transform">
+                    <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-round-200x200.png" alt="Zarco Logo" class="w-full h-full rounded-xl object-cover">
+                </div>
+                <span class="text-2xl font-black tracking-tighter">ZARCO</span>
             </div>
-        </div>
-        <div class="w-8 h-[2px] bg-[#35363C] rounded-lg mx-auto mb-1"></div>
-        <div class="group relative flex justify-center w-full">
-            <div class="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-r-full w-1 h-10"></div>
-            <div class="w-[48px] h-[48px] bg-discord-chat rounded-[16px] flex items-center justify-center cursor-pointer text-white overflow-hidden relative border border-transparent">
-               <div class="absolute inset-0 bg-[#313338] flex items-center justify-center">
-                   <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/purple.png" alt="Zarco" class="w-full h-full object-cover">
-               </div>
+
+            <div class="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+                <a href="#features" class="text-sm font-medium text-gray-400 hover:text-accent transition-colors">Modules</a>
+                <a href="#reviews" class="text-sm font-medium text-gray-400 hover:text-accent transition-colors">Reviews</a>
+                <a href="#stats" class="text-sm font-medium text-gray-400 hover:text-accent transition-colors">Stats</a>
+                <a href="partners.html" class="text-sm font-medium text-gray-400 hover:text-accent transition-colors">Partners</a>
             </div>
-        </div>
-        <div class="group relative flex justify-center w-full">
-            <div class="w-[48px] h-[48px] bg-discord-chat rounded-[24px] group-hover:rounded-[16px] group-hover:bg-discord-blurple transition-all flex items-center justify-center cursor-pointer text-discord-text group-hover:text-white">
-                <div style="width: 24px; height: 24px; background-color: currentColor; -webkit-mask-image: url(assets/icons/add-a-server.svg); mask-image: url(assets/icons/add-a-server.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></div>
+
+            <div class="hidden md:flex items-center gap-4">
+                    <a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="px-6 py-2 rounded-full glass border-white/20 hover:border-accent hover:text-accent transition-all text-sm font-semibold">
+                        Support
+                    </a>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1345820519827636295" target="_blank" class="px-6 py-2 rounded-full bg-accent text-black font-bold hover:opacity-90 transition-all shadow-accent">
+                        Add to Discord
+                    </a>
             </div>
-        </div>
-        <div class="group relative flex justify-center w-full">
-            <div class="w-[48px] h-[48px] bg-discord-chat rounded-[24px] group-hover:rounded-[16px] group-hover:bg-discord-blurple transition-all flex items-center justify-center cursor-pointer text-discord-text group-hover:text-white">
-                <div style="width: 24px; height: 24px; background-color: currentColor; -webkit-mask-image: url(assets/icons/explore.svg); mask-image: url(assets/icons/explore.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></div>
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-white">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 mt-4 glass rounded-3xl border border-white/10 py-8 px-6 flex flex-col gap-6 animate-in slide-in-from-top shadow-2xl">
+            <a href="#features" class="text-xl font-medium">Modules</a>
+            <a href="#reviews" class="text-xl font-medium">Reviews</a>
+            <a href="#stats" class="text-xl font-medium">Stats</a>
+            <a href="partners.html" class="text-xl font-medium">Partners</a>
+            <div class="flex flex-col gap-4 mt-4">
+                <a href="https://discord.com/oauth2/authorize?client_id=1345820519827636295" target="_blank" class="w-full py-4 rounded-2xl bg-accent text-black font-bold text-lg text-center">Add to Discord</a>
+                <a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="w-full py-4 rounded-2xl glass border-white/10 font-bold text-center">Join Support</a>
             </div>
         </div>
     </nav>
 
-    <!-- Sidebar: Channels -->
-    <div class="w-80 bg-[#2c2d32] flex-col shrink-0 hidden md:flex">
-        <header class="h-12 px-4 flex items-center justify-center bg-[#2c2d32] shadow-sm border-b border-discord-divider shrink-0">
-        </header>
-        <header class="h-12 px-4 flex items-center justify-between shadow-sm cursor-pointer hover:bg-discord-hover transition-colors border-b border-discord-divider">
-            <h1 class="font-bold text-discord-header text-[15px] truncate">Zarco HQ</h1>
-            <i class="fa-solid fa-chevron-down text-xs"></i>
-        </header>
-
-        <div class="flex-1 overflow-y-auto pt-3 px-2 space-y-[2px]">
-            <div class="flex items-center px-2 py-[6px] text-discord-muted hover:bg-discord-hover hover:text-discord-text rounded-[4px] cursor-pointer group mb-4">
-                <div class="w-5 h-5 mr-1.5 shrink-0" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/events.svg); mask-image: url(assets/icons/events.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></div>
-                <span class="font-medium text-[15px]">Events</span>
-            </div>
-
-            <div id="category-header" class="flex items-center justify-between pr-2 pl-0 pt-2 pb-1 text-xs font-bold text-discord-muted hover:text-discord-text cursor-pointer uppercase tracking-wide group">
-                <div class="flex items-center">
-                    <div id="category-arrow" class="w-3 h-3 mr-1"></div>
-                    IMPORTANT
-                </div>
-            </div>
-
-            <div id="category-channels">
-                <div id="channel-zarco" data-channel="zarco" class="channel-item flex items-center px-2 py-[6px] bg-discord-hover text-white rounded-[4px] cursor-pointer group relative mb-[2px]">
-                    <div class="w-5 h-5 mr-1.5 shrink-0 text-discord-muted" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
-                    <span class="font-medium text-[15px]">zarco</span>
-                </div>
-                <div id="channel-tos" data-channel="tos" class="channel-item flex items-center px-2 py-[6px] text-discord-muted hover:bg-discord-hover hover:text-discord-text rounded-[4px] cursor-pointer group relative mb-[2px]">
-                    <div class="w-5 h-5 mr-1.5 shrink-0 text-discord-muted" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
-                    <span class="font-medium text-[15px]">tos</span>
-                </div>
-                <div id="channel-privacy" data-channel="privacy" class="channel-item flex items-center px-2 py-[6px] text-discord-muted hover:bg-discord-hover hover:text-discord-text rounded-[4px] cursor-pointer group relative mb-[2px]">
-                    <div class="w-5 h-5 mr-1.5 shrink-0 text-discord-muted" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
-                    <span class="font-medium text-[15px]">privacy</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- User Area (Floating) -->
-    <div class="fixed bottom-2 left-2 w-[376px] h-[60px] bg-[#232428] px-2 flex items-center justify-between shrink-0 rounded-[8px] shadow-lg z-50 hidden md:flex overflow-hidden">
-        <video src="https://cdn.discordapp.com/assets/collectibles/nameplates/cosmos/cosmic_twilight_flow_beryl/asset.webm" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none"></video>
-        <div class="relative z-10 flex items-center group cursor-pointer hover:bg-white/5 rounded px-1 py-1 flex-1 min-w-0">
-            <div class="relative mr-2 shrink-0">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarScape/logo-with-background.png" class="w-8 h-8 rounded-full">
-                <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_1005898c6acf56a9ac5010baf444f6fd.png?size=80&passthrough=true" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40px] h-[40px] pointer-events-none">
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-[#232428] rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
-                </div>
-            </div>
-            <div class="text-sm leading-tight truncate relative">
-                <div class="font-bold text-white text-[13px] truncate">ZarScape</div>
-                <div class="text-discord-muted text-[11px] truncate flex items-center">
-                    <img src="https://cdn.discordapp.com/emojis/1418253423639531550.webp?size=40" class="w-3 h-3 mr-1">
-                    Developer @ Zarco
-                </div>
-            </div>
-        </div>
-        <div class="relative z-10 flex items-center shrink-0">
-            <button id="btn-mute" class="w-8 h-8 flex items-center justify-center hover:bg-discord-hover rounded text-discord-text" title="Mute"></button>
-            <button id="btn-deafen" class="w-8 h-8 flex items-center justify-center hover:bg-discord-hover rounded text-discord-text" title="Deafen"></button>
-            <button class="w-8 h-8 flex items-center justify-center hover:bg-discord-hover rounded text-discord-text" title="User Settings">
-                <div style="width: 20px; height: 20px; background-color: currentColor; -webkit-mask-image: url(assets/icons/settings.svg); mask-image: url(assets/icons/settings.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"></div>
-            </button>
-        </div>
-    </div>
-
-    <!-- Main Content Wrapper -->
-    <div class="flex-1 flex flex-col min-w-0 bg-[#323339]">
-        <!-- Top Bar -->
-        <div class="h-12 px-4 flex items-center shadow-sm border-b border-discord-divider shrink-0 z-10 bg-[#323339] relative">
-            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/purple.png" class="w-6 h-6 rounded-md mr-2">
-                <span class="font-bold text-discord-header text-[15px]">Zarco HQ</span>
-            </div>
-            <div class="ml-auto flex items-center space-x-4">
-                <!-- Inbox SVG -->
-                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/inbox.svg); mask-image: url(assets/icons/inbox.svg);" title="Inbox"></div>
-                <!-- Help SVG -->
-                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/help.svg); mask-image: url(assets/icons/help.svg);" title="Help"></div>
-            </div>
-        </div>
-
-        <!-- Channel Header -->
-        <header class="h-12 px-4 flex items-center shadow-sm border-b border-discord-divider shrink-0 z-10 bg-[#323339] relative">
-            <div class="flex items-center text-discord-muted mr-4">
-                <div class="w-6 h-6 mr-2 shrink-0 text-[#80848E]" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
-                <span id="current-channel-name" class="font-bold text-discord-header text-[15px]">zarco</span>
+    <!-- Hero Section -->
+    <section class="relative pt-32 md:pt-48 pb-20 md:pb-32 overflow-hidden">
+        <div class="glow -top-40 -left-40 scale-150"></div>
+        <div class="glow top-20 right-0 scale-125"></div>
+        
+        <div class="container mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border-white/10 mb-10 animate-pulse">
+                <div class="w-2 h-2 rounded-full bg-accent shadow-accent"></div>
+                <span class="text-[10px] font-black tracking-[0.2em] text-accent uppercase">Your Ultimate Discord Companion</span>
             </div>
             
-            <div class="ml-auto flex items-center space-x-4">
-                <!-- Threads SVG -->
-                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/threads.svg); mask-image: url(assets/icons/threads.svg);" title="Threads"></div>
+            <h1 class="text-6xl md:text-9xl font-black mb-8 tracking-tighter leading-[0.95] md:leading-[0.85]">
+                Evolve Your <br />
+                <span class="text-accent italic">Community</span>
+            </h1>
+            
+            <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-400 mb-12 leading-relaxed">
+                Zarco is the definitive multi-purpose Discord app. High-end moderation, advanced utilities, and powerful engagement tools for elite servers.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <a href="https://discord.com/oauth2/authorize?client_id=1345820519827636295" target="_blank" class="group flex items-center gap-3 px-10 py-5 rounded-2xl bg-accent text-black font-black text-xl shadow-accent hover:scale-105 active:scale-95 transition-all">
+                    ADD TO DISCORD <i data-lucide="chevron-right" class="group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="px-10 py-5 rounded-2xl glass border-white/10 font-bold text-xl hover:bg-white/5 transition-all">
+                    Join Support
+                </a>
+            </div>
+        </div>
+    </section>
 
-                <!-- Bell SVG -->
-                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/bell.svg); mask-image: url(assets/icons/bell.svg);" title="Notifications"></div>
+    <!-- Features Section -->
+    <section id="features" class="py-20 md:py-32 relative border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                <div class="max-w-xl">
+                    <h2 class="text-accent text-sm font-black tracking-widest uppercase mb-4">Elite Modules</h2>
+                    <p class="text-5xl font-black leading-tight">Everything built-in. <br />Inside Zarco</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Auditlogs -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="clipboard-list" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Auditlogs</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Track every action within your server.</p>
+                </div>
+                <!-- Autorole -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="user-plus" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Autorole</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Automatically assign roles to new members.</p>
+                </div>
+                <!-- Counting -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="binary" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Counting</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Engage members with counting channels.</p>
+                </div>
+                <!-- Custom Embeds -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="layout-template" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Custom Embeds</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Create beautiful custom embeds easily.</p>
+                </div>
+                <!-- Emoji -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="smile-plus" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Emoji</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Manage and steal emojis for your server.</p>
+                </div>
+                <!-- Games -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="gamepad-2" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Games</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Fun mini-games to keep chat active.</p>
+                </div>
+                <!-- Giveaway -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="gift" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Giveaway</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Host and manage giveaways seamlessly.</p>
+                </div>
+                <!-- Greetings -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="hand" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Greetings</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Customizable welcome and goodbye messages.</p>
+                </div>
+                <!-- Info -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="info" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Info</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Display server and user information.</p>
+                </div>
+                <!-- Logs -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="file-text" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Logs</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Keep a record of server events.</p>
+                </div>
+                <!-- Moderation -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-alert" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Moderation</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Powerful tools to moderate your server.</p>
+                </div>
+                <!-- PVC -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="mic" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">PVC</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Private Voice Channels for members.</p>
+                </div>
+                <!-- Premium -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="crown" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Premium</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Unlock exclusive features and limits.</p>
+                </div>
+                <!-- Reminder -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="bell" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Reminder</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Set reminders for important tasks.</p>
+                </div>
+                <!-- Role -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="user-cog" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Role</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Manage roles and permissions easily.</p>
+                </div>
+                <!-- Utility -->
+                <div class="p-8 glass rounded-[2rem] border-white/5 hover:border-accent/30 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="wrench" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">Utility</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Essential utilities for server management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wall of Love (Marquee) -->
+    <section id="reviews" class="py-20 md:py-32 border-y border-white/5 relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center mb-20">
+            <h2 class="text-5xl font-black mb-6 italic">The Wall of Love</h2>
+            <p class="text-gray-400 max-w-xl mx-auto">Real feedback from server owners and community leads who have scaled with Zarco.</p>
+        </div>
+
+        <!-- Marquee Row 1 -->
+        <div class="mb-8">
+            <div class="animate-marquee">
+                <!-- Review Cards -->
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"You never fail to deliver high-quality work. Your passion for coding really shows through everything you build."</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">hexavoidsec</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"This bot is crazy, best bot ever."</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">hexonal</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Best Discord App"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">sayedafatima</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"zarco is such a slay bot, helps with stuff, vibes with everyone, lowkey the blueprint fr 🫶💻"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">Mia</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"This bot is crazy"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">ynp._.amq</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"best bot on planet earth 😍"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">darknetos</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"im very satisfied great job all"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">haseebxtreme</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"love it !!"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">unknownanita</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Nice App"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">yasirawan4831</p>
+                </div>
+                <!-- Duplicates for seamless loop (Must match exact set above) -->
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"You never fail to deliver high-quality work. Your passion for coding really shows through everything you build."</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">hexavoidsec</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"This bot is crazy, best bot ever."</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">hexonal</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Best Discord App"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">sayedafatima</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"zarco is such a slay bot, helps with stuff, vibes with everyone, lowkey the blueprint fr 🫶💻"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">Mia</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"This bot is crazy"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">ynp._.amq</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"best bot on planet earth 😍"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">darknetos</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"im very satisfied great job all"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">haseebxtreme</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"love it !!"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">unknownanita</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Nice App"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">yasirawan4831</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marquee Row 2 -->
+        <div>
+            <div class="animate-marquee-reverse">
+                <!-- Review Cards -->
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Best discord app ever"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">mohibyte</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"its a great app!"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">Alkene</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Best Bot Ever :)"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">phantomx050</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Really good bot, all you need."</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">imle64cy</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"absolutely love zarco, super reliable and easy to use. top discord app!"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">Deleted User</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Perfect app"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">mohibali0134</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Best app! with multiple feature"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">senusen</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"&lt;3"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">xougui</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"awesome !!! Best multifunctional app ❤"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">bigbird.exe</p>
+                </div>
+                <!-- Duplicates for seamless loop -->
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Best discord app ever"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">mohibyte</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"its a great app!"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">Alkene</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Best Bot Ever :)"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">phantomx050</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Really good bot, all you need."</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">imle64cy</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"absolutely love zarco, super reliable and easy to use. top discord app!"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">Deleted User</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Perfect app"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">mohibali0134</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"Best app! with multiple feature"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">senusen</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"&lt;3"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">xougui</p>
+                </div>
+                <div class="review-card flex-shrink-0 w-[350px] p-8 glass rounded-3xl border-white/5">
+                    <div class="flex gap-1 mb-4 text-accent"><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i><i data-lucide="star" class="fill-accent w-4 h-4"></i></div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed italic">"awesome !!! Best multifunctional app ❤"</p>
+                    <p class="font-black text-sm uppercase tracking-widest text-white">bigbird.exe</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="py-20 md:py-32">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="group p-12 glass rounded-[3rem] text-center border-white/5 relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 text-accent/5 group-hover:text-accent/10 transition-colors">
+                        <i data-lucide="server" class="w-32 h-32"></i>
+                    </div>
+                    <h4 class="text-6xl font-black text-accent mb-3">300+</h4>
+                    <p class="text-gray-400 font-bold uppercase tracking-widest text-xs">Servers Secured</p>
+                </div>
+                <div class="group p-12 glass rounded-[3rem] text-center border-white/5 relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 text-accent/5 group-hover:text-accent/10 transition-colors">
+                        <i data-lucide="users" class="w-32 h-32"></i>
+                    </div>
+                    <h4 class="text-6xl font-black text-accent mb-3">140K+</h4>
+                    <p class="text-gray-400 font-bold uppercase tracking-widest text-xs">Active Users</p>
+                </div>
+                <div class="group p-12 glass rounded-[3rem] text-center border-white/5 relative overflow-hidden">
+                    <div class="absolute -right-8 -top-8 text-accent/5 group-hover:text-accent/10 transition-colors">
+                        <i data-lucide="activity" class="w-32 h-32"></i>
+                    </div>
+                    <h4 class="text-6xl font-black text-accent mb-3">99.99%</h4>
+                    <p class="text-gray-400 font-bold uppercase tracking-widest text-xs">Uptime Guaranteed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 md:py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="glass rounded-[4rem] p-16 md:p-32 text-center border-white/10 relative overflow-hidden">
+                <div class="glow -top-40 -right-40"></div>
+                <div class="glow -bottom-40 -left-40"></div>
                 
-                <!-- Pin SVG -->
-                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/pin.svg); mask-image: url(assets/icons/pin.svg);" title="Pinned Messages"></div>
+                <h2 class="text-5xl md:text-7xl font-black mb-10 leading-[1.1]">The elite choice <br /> for your community.</h2>
+                <p class="text-gray-400 text-xl max-w-2xl mx-auto mb-14">Empower your server with the ultimate moderation and utility toolkit. Join the elite communities trusting Zarco today.</p>
                 
-                <!-- Members SVG -->
-                <div class="header-icon active" style="-webkit-mask-image: url(assets/icons/members.svg); mask-image: url(assets/icons/members.svg);" title="Show Member List"></div>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1345820519827636295" target="_blank" class="px-12 py-6 bg-accent text-black font-black text-2xl rounded-2xl shadow-accent hover:scale-105 active:scale-95 transition-all">
+                        INVITE ZARCO NOW
+                    </a>
+                    <a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="px-12 py-6 glass border-white/20 font-bold text-2xl rounded-2xl hover:bg-white/5 transition-all">
+                        Join Support Server
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-8">
+                        <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
+                            <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-round-200x200.png" alt="Zarco Logo" class="w-full h-full rounded-lg object-cover">
+                        </div>
+                        <span class="text-xl font-black tracking-tighter">ZARCO</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">Your Ultimate Discord Companion. Always by your side.</p>
+                </div>
                 
-                <div class="relative">
-                    <input type="text" placeholder="Search" class="bg-discord-darkest text-xs px-2 py-[5px] rounded-[4px] w-48 outline-none transition-all focus:w-80 text-discord-text">
+                <div>
+                    <h5 class="font-black uppercase tracking-widest text-xs mb-8">Platform</h5>
+                    <ul class="space-y-4 text-gray-400 font-medium">
+                        <li><a href="https://discord.com/oauth2/authorize?client_id=1345820519827636295" target="_blank" class="hover:text-accent transition-colors">Add to Discord</a></li>
+                    </ul>
                 </div>
-
-                <!-- Bookmark SVG -->
-                <div class="header-icon" style="-webkit-mask-image: url(assets/icons/bookmark.svg); mask-image: url(assets/icons/bookmark.svg);" title="Bookmarks"></div>
-            </div>
-        </header>
-
-        <!-- Flex Container for Chat and Members -->
-        <div class="flex-1 flex overflow-hidden">
-            <!-- Chat Area -->
-            <div class="flex-1 flex flex-col min-w-0 relative">
-                <main class="flex-1 overflow-y-auto px-4 flex flex-col pb-6">
-                    <!-- Zarco Channel Content -->
-                    <div id="content-zarco" class="channel-content flex-1 flex flex-col">
-                        <div class="mt-auto mb-6">
-                            <div class="w-[68px] h-[68px] bg-[#41434a] rounded-full flex items-center justify-center mb-4 text-white">
-                                <div class="w-9 h-9" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
-                            </div>
-                            <h1 class="text-[32px] font-bold text-white mb-2">Welcome to #zarco!</h1>
-                            <p class="text-discord-muted text-[16px]">This is the start of the #zarco channel.</p>
-                        </div>
-
-                        <!-- Plain Message with Buttons -->
-                        <div class="group flex pl-4 pr-4 py-1 hover:bg-[#2e3035] -mx-4 mt-4">
-                            <div class="w-10 h-10 rounded-full bg-discord-green mr-4 mt-0.5 shrink-0 flex items-center justify-center text-white font-bold text-lg">
-                                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-animate.gif" alt="Zarco" class="w-full h-full object-cover rounded-full">
-                            </div>
-                            <div class="w-full">
-                                <div class="flex items-center mb-1">
-                                    <span class="font-medium text-white hover:underline cursor-pointer mr-1.5">Zarco</span>
-                                    <span class="bg-discord-blurple text-white bot-tag mr-1.5"><i class="fa-solid fa-check text-[8px] mr-1"></i> APP</span>
-                                    <span class="text-xs text-discord-muted">Today at 11:05 PM</span>
-                                </div>
-                                <div class="text-discord-text text-[15px] leading-[1.375rem]">
-                                    <p class="mb-1">Welcome to <span class="text-[#c9cdfb] bg-[#3f4147] px-1 rounded cursor-pointer hover:bg-[#5865F2] hover:text-white transition-colors">#zarco</span>!</p>
-                                    <p class="mb-1">Zarco, Your Ultimate Discord Companion. Always by Your Side</p>
-                                    <p class="mb-2">A multipurpose app packed with everything you need to enhance your server</p>
-                                    <div class="flex gap-2 mt-2">
-                                        <a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="bg-[#4e5058] hover:bg-[#6d6f78] text-white text-sm font-medium px-4 h-8 rounded-[8px] flex items-center transition-colors no-underline">Support <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-2"></i></a>
-                                        <a href="https://discord.com/oauth2/authorize?client_id=1345820519827636295" target="_blank" class="bg-[#4e5058] hover:bg-[#6d6f78] text-white text-sm font-medium px-4 h-8 rounded-[8px] flex items-center transition-colors no-underline">Invite <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-2"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- TOS Channel Content -->
-                    <div id="content-tos" class="channel-content hidden flex-1 flex flex-col">
-                        <div class="mt-auto mb-6">
-                            <div class="w-[68px] h-[68px] bg-[#41434a] rounded-full flex items-center justify-center mb-4 text-white">
-                                <div class="w-9 h-9" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
-                            </div>
-                            <h1 class="text-[32px] font-bold text-white mb-2">Welcome to #tos!</h1>
-                            <p class="text-discord-muted text-[16px]">This is the start of the #tos channel.</p>
-                        </div>
-                        <div class="group flex pl-4 pr-4 py-1 hover:bg-[#2e3035] -mx-4 mt-4">
-                            <div class="w-10 h-10 rounded-full bg-discord-green mr-4 mt-0.5 shrink-0 flex items-center justify-center text-white font-bold text-lg">
-                                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-animate.gif" alt="Zarco" class="w-full h-full object-cover rounded-full">
-                            </div>
-                            <div class="w-full">
-                                <div class="flex items-center mb-1">
-                                    <span class="font-medium text-white hover:underline cursor-pointer mr-1.5">Zarco</span>
-                                    <span class="bg-discord-blurple text-white bot-tag mr-1.5"><i class="fa-solid fa-check text-[8px] mr-1"></i> APP</span>
-                                    <span class="text-xs text-discord-muted">Today at 11:05 PM</span>
-                                </div>
-                                <div class="text-discord-text text-[15px] leading-[1.375rem]">
-                                    <h1 class="text-xl font-bold text-white mb-1">Terms of Service</h1>
-                                    <p class="text-xs text-discord-muted mb-4 uppercase font-bold">Last updated on: Friday, June 20, 2025</p>
-                                    
-                                    <p class="mb-4"><strong class="text-white">Welcome to Zarco’s Terms of Service</strong><br>By using the Zarco Discord bot (“the App”), you agree to be bound by these Terms of Service (“Terms”). If you do not agree, please discontinue use.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">License</h2>
-                                    <p class="mb-2">Zarco grants you a limited, non-exclusive, non-transferable license to use the App for personal or non-commercial purposes in accordance with these Terms.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Prohibited Uses</h2>
-                                    <p class="mb-1">You must not use the App in any way that:</p>
-                                    <ul class="list-disc list-inside mb-2 pl-2 space-y-1">
-                                        <li>Violates any applicable laws or regulations.</li>
-                                        <li>Contravenes Discord’s Terms of Service or Community Guidelines.</li>
-                                        <li>Harms or disrupts the App, other users, or servers.</li>
-                                        <li>Is for commercial gain without explicit written consent from Zarco.</li>
-                                    </ul>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">User Responsibilities</h2>
-                                    <p class="mb-1">You are responsible for:</p>
-                                    <ul class="list-disc list-inside mb-2 pl-2 space-y-1">
-                                        <li>Maintaining confidentiality of your Discord account credentials.</li>
-                                        <li>Ensuring your use complies with all laws and server rules.</li>
-                                    </ul>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Data Practices</h2>
-                                    <p class="mb-2">For details on data collection and usage, please see our <a href="#privacy" onclick="document.getElementById('channel-privacy').click()" class="text-[#00b0f4] hover:underline">Privacy Policy</a>.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Termination</h2>
-                                    <ul class="list-disc list-inside mb-2 pl-2 space-y-1">
-                                        <li><strong class="text-white">By Zarco:</strong> We may suspend or revoke access for Terms violations.</li>
-                                        <li><strong class="text-white">By You:</strong> You may stop using the App at any time.</li>
-                                    </ul>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Disclaimers & Limitations</h2>
-                                    <p class="mb-2">The App is provided “as is.” Zarco disclaims all warranties and is not liable for damages arising from your use.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Indemnification</h2>
-                                    <p class="mb-2">You agree to indemnify Zarco and its officers from any claims or liabilities arising from your use or violation of these Terms.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Modifications</h2>
-                                    <p class="mb-2">We reserve the right to modify or discontinue features without notice.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Governing Law</h2>
-                                    <p class="mb-2">These Terms are governed by generally accepted principles of international law. Disputes will be resolved through good-faith negotiation or binding arbitration.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Contact</h2>
-                                    <p class="mb-2">For inquiries, reach out in our support server: <a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="text-[#00b0f4] hover:underline">Zarco HQ</a>.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Privacy Channel Content -->
-                    <div id="content-privacy" class="channel-content hidden flex-1 flex flex-col">
-                        <div class="mt-auto mb-6">
-                            <div class="w-[68px] h-[68px] bg-[#41434a] rounded-full flex items-center justify-center mb-4 text-white">
-                                <div class="w-9 h-9" style="background-color: currentColor; -webkit-mask-image: url(assets/icons/hash.svg); mask-image: url(assets/icons/hash.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;"></div>
-                            </div>
-                            <h1 class="text-[32px] font-bold text-white mb-2">Welcome to #privacy!</h1>
-                            <p class="text-discord-muted text-[16px]">This is the start of the #privacy channel.</p>
-                        </div>
-                        <div class="group flex pl-4 pr-4 py-1 hover:bg-[#2e3035] -mx-4 mt-4">
-                            <div class="w-10 h-10 rounded-full bg-discord-green mr-4 mt-0.5 shrink-0 flex items-center justify-center text-white font-bold text-lg">
-                                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-animate.gif" alt="Zarco" class="w-full h-full object-cover rounded-full">
-                            </div>
-                            <div class="w-full">
-                                <div class="flex items-center mb-1">
-                                    <span class="font-medium text-white hover:underline cursor-pointer mr-1.5">Zarco</span>
-                                    <span class="bg-discord-blurple text-white bot-tag mr-1.5"><i class="fa-solid fa-check text-[8px] mr-1"></i> APP</span>
-                                    <span class="text-xs text-discord-muted">Today at 11:05 PM</span>
-                                </div>
-                                <div class="text-discord-text text-[15px] leading-[1.375rem]">
-                                    <h1 class="text-xl font-bold text-white mb-1">Privacy Policy</h1>
-                                    <p class="text-xs text-discord-muted mb-4 uppercase font-bold">Last updated on: Monday, July 29, 2025</p>
-                                    
-                                    <p class="mb-4"><strong class="text-white">Welcome to Zarco’s Privacy Policy</strong><br>At Zarco, we prioritize your privacy. This policy explains exactly what data we collect, how we use it, and how we keep it secure—always minimizing retention and never storing message content.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Data Collected</h2>
-                                    <ul class="list-disc list-inside mb-2 pl-2 space-y-1">
-                                        <li><strong class="text-white">Discord IDs</strong> (User, Server, Channel) to enable bot functionality (e.g., giveaways, embeds, PVCs).</li>
-                                        <li><strong class="text-white">Temporary Session Data</strong> (e.g., giveaway participants, embed drafts) stored locally and purged immediately after use.</li>
-                                        <li><strong class="text-white">Configuration IDs</strong> (e.g., role IDs for autorole, channel IDs for audit logs) stored only for as long as the feature is enabled.</li>
-                                    </ul>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">No Message Content Storage</h2>
-                                    <p class="mb-2">We do not retain any user messages. Modmail DMs, giveaway interactions, embed inputs, and utility command inputs are processed in real-time and immediately discarded.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">No External Databases</h2>
-                                    <p class="mb-2">All data is stored securely on our own servers in JSON files or local databases. We never use third-party or cloud databases.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Data Usage</h2>
-                                    <ul class="list-disc list-inside mb-2 pl-2 space-y-1">
-                                        <li>Deliver bot features (e.g., create private VCs, manage giveaways).</li>
-                                        <li>Respect permissions and security settings.</li>
-                                        <li>Automatically purge data when no longer needed.</li>
-                                    </ul>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Data Sharing</h2>
-                                    <p class="mb-2">We do not sell, trade, or rent any personal data. We do not share your data with third parties except when legally required or to comply with valid legal processes.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Security Measures</h2>
-                                    <p class="mb-2">We implement industry-standard security measures to protect your data both during transmission and storage. However, no method of internet transmission or storage is completely secure.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Cookies</h2>
-                                    <p class="mb-2">Our website may use cookies to enhance user experience. These cookies do not track personal information or bot-related data.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Your Rights</h2>
-                                    <p class="mb-2">Depending on your jurisdiction, you can request access to or deletion of your data by contacting us via Zarco HQ.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Policy Updates</h2>
-                                    <p class="mb-2">We may revise this policy to reflect changes in our practices or legal requirements. Each update will show a new “Last updated” date.</p>
-
-                                    <h2 class="text-base font-bold text-white mt-4 mb-2">Contact Us</h2>
-                                    <p class="mb-2">For any privacy inquiries, please reach out in our support server: <a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="text-[#00b0f4] hover:underline">Zarco HQ</a>.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-
-                <!-- Message Input -->
-                <div class="px-4 pb-6 pt-2">
-                    <div class="bg-[#383a40] rounded-lg flex items-center px-4 py-2.5 cursor-not-allowed">
-                        <input type="text" placeholder="You don't have permissions to send messages in this channel." class="bg-transparent flex-1 outline-none text-discord-text cursor-not-allowed placeholder-discord-muted" disabled>
-                    </div>
+                
+                <div>
+                    <h5 class="font-black uppercase tracking-widest text-xs mb-8">Resources</h5>
+                    <ul class="space-y-4 text-gray-400 font-medium">
+                        <li><a href="https://discord.gg/6YVmxA4Qsf" target="_blank" class="hover:text-accent transition-colors">Support Hub</a></li>
+                        <li><a href="partners.html" class="hover:text-accent transition-colors">Partners</a></li>
+                        <li><a href="privacy.html" class="hover:text-accent transition-colors">Privacy Policy</a></li>
+                        <li><a href="tos.html" class="hover:text-accent transition-colors">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
-
-            <!-- Right Sidebar: Members -->
-            <div class="w-64 bg-[#323339] flex-col shrink-0 overflow-y-auto no-scrollbar pb-4 hidden lg:flex border-l border-discord-divider">
-                <!-- ROLE SECTION: DEVELOPER -->
-                <div class="px-4 mt-6 mb-1">
-                    <h2 class="text-[12px] font-bold text-discord-muted uppercase tracking-wider">Developer — 1</h2>
-                </div>
-        
-        <div class="member-item relative overflow-hidden flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100">
-            <video src="https://cdn.discordapp.com/assets/collectibles/nameplates/cosmos/cosmic_twilight_flow_beryl/asset.webm" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover opacity-60 pointer-events-none"></video>
-            <div class="relative mr-3 shrink-0 z-10">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarScape/logo-with-background.png" class="w-8 h-8 rounded-full ring-0">
-                <img src="https://cdn.discordapp.com/avatar-decoration-presets/a_1005898c6acf56a9ac5010baf444f6fd.png?size=80&passthrough=true" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40px] h-[40px] pointer-events-none">
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
-                </div>
-            </div>
-            <div class="min-w-0 flex-1 relative z-10">
-                <div class="flex items-center">
-                    <span class="text-white font-semibold text-[15px] truncate leading-tight">ZarScape</span>
-                    <div class="w-[14px] h-[14px] ml-1.5 shrink-0 bg-discord-yellow" style="-webkit-mask-image: url(assets/icons/developer-badge.svg); mask-image: url(assets/icons/developer-badge.svg); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;" title="Developer"></div>
-                </div>
-                <div class="text-[11px] text-discord-muted truncate leading-tight flex items-center mt-0.5">
-                    <img src="https://cdn.discordapp.com/emojis/1418253423639531550.webp?size=40" class="w-4 h-4 mr-1">
-                    Developer @ Zarco
-                </div>
+            
+            <div class="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">
+                <p>&copy; <span id="current-year"></span> ZARCO APP. ALL RIGHTS RESERVED.</p>
+                <p>Designed with <span class="text-accent">&hearts;</span> for the Discord ecosystem.</p>
             </div>
         </div>
-
-        <!-- ROLE SECTION: BOTS -->
-        <div class="px-4 mt-6 mb-1">
-            <h2 class="text-[12px] font-bold text-discord-muted uppercase tracking-wider">APPS — 1</h2>
-        </div>
-
-        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
-            <div class="relative mr-3 shrink-0">
-                <div class="w-8 h-8 rounded-full bg-discord-green flex items-center justify-center text-white font-bold text-[13px]">
-                    <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/zarco-animate.gif" alt="Zarco" class="w-full h-full object-cover rounded-full">
-                </div>
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
-                </div>
-            </div>
-            <div class="min-w-0 flex-1">
-                <div class="flex items-center">
-                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Zarco</span>
-                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- ROLE SECTION: PARTNERS -->
-        <div class="px-4 mt-6 mb-1">
-            <h2 class="text-[12px] font-bold text-discord-muted uppercase tracking-wider">PARTNERS — 7</h2>
-        </div>
-
-        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
-            <div class="relative mr-3 shrink-0">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/Lyxious.png" class="w-8 h-8 rounded-full">
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
-                </div>
-            </div>
-            <div class="min-w-0 flex-1">
-                <div class="flex items-center">
-                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Lyxios</span>
-                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
-                </div>
-                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">/luckyblock</div>
-            </div>
-        </div>
-
-        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
-            <div class="relative mr-3 shrink-0">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/Confessy.png" class="w-8 h-8 rounded-full">
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
-                </div>
-            </div>
-            <div class="min-w-0 flex-1">
-                <div class="flex items-center">
-                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Confessy</span>
-                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
-                </div>
-                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">Anonymous Confessions</div>
-            </div>
-        </div>
-
-        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
-            <div class="relative mr-3 shrink-0">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/LazaBot.png" class="w-8 h-8 rounded-full">
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
-                </div>
-            </div>
-            <div class="min-w-0 flex-1">
-                <div class="flex items-center">
-                    <span class="text-white font-semibold text-[15px] truncate leading-tight">LazaBot</span>
-                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
-                </div>
-                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">LazaBot | !help</div>
-            </div>
-        </div>
-
-        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
-            <div class="relative mr-3 shrink-0">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/8fc7f62915b0d3b5c7f55a92a9253395ec895f30/images/ZarcoPartners/WavyBot.png" class="w-8 h-8 rounded-full">
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
-                </div>
-            </div>
-            <div class="min-w-0 flex-1">
-                <div class="flex items-center">
-                    <span class="text-white font-semibold text-[15px] truncate leading-tight">WavyBot</span>
-                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
-                </div>
-                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">@WavyBot || Waves in the Beach</div>
-            </div>
-        </div>
-
-        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
-            <div class="relative mr-3 shrink-0">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/Spike.png" class="w-8 h-8 rounded-full">
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
-                </div>
-            </div>
-            <div class="min-w-0 flex-1">
-                <div class="flex items-center">
-                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Spike</span>
-                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
-                </div>
-                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">Bot Brawl Stars 100%</div>
-            </div>
-        </div>
-
-        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
-            <div class="relative mr-3 shrink-0">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/Rypo.png" class="w-8 h-8 rounded-full">
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
-                </div>
-            </div>
-            <div class="min-w-0 flex-1">
-                <div class="flex items-center">
-                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Rypo</span>
-                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="member-item flex items-center px-2 py-1 mx-2 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-colors duration-100 mt-0.5">
-            <div class="relative mr-3 shrink-0">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/ZarcoPartners/Drayv.gif" class="w-8 h-8 rounded-full">
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-discord-green rounded-full"></div>
-                </div>
-            </div>
-            <div class="min-w-0 flex-1">
-                <div class="flex items-center">
-                    <span class="text-white font-semibold text-[15px] truncate leading-tight">Drayv</span>
-                    <span class="bg-discord-blurple text-white bot-tag ml-1"><i class="fa-solid fa-check text-[7px] mr-1"></i> APP</span>
-                </div>
-                <div class="text-[11px] text-discord-muted truncate leading-tight mt-0.5">✨ gg/BqXCqRqkFh</div>
-            </div>
-        </div>
-
-        <!-- OFFLINE SECTION -->
-        <div class="px-4 mt-6 mb-1">
-            <h2 class="text-[12px] font-bold text-discord-muted uppercase tracking-wider">Offline — 1</h2>
-        </div>
-
-        <div class="member-item flex items-center px-2 py-1 mx-2 opacity-40 hover:opacity-100 hover:bg-discord-hover rounded-[4px] cursor-pointer group transition-all duration-100 mt-0.5">
-            <div class="relative mr-3 shrink-0">
-                <img src="https://raw.githubusercontent.com/ZarScape/ZarScape/refs/heads/main/images/Zarco/blue.png" class="w-8 h-8 rounded-full">
-                <div class="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-discord-dark rounded-full flex items-center justify-center">
-                    <div class="w-[10px] h-[10px] bg-[#1e1f22] border-[2.5px] border-discord-muted rounded-full"></div>
-                </div>
-            </div>
-            <div class="min-w-0 flex-1">
-                <div class="text-discord-muted font-semibold text-[15px] truncate group-hover:text-white leading-tight">Zarco Tester</div>
-            </div>
-        </div>
-    </div>
-        </div>
-    </div>
-
+    </footer>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
